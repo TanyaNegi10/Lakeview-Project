@@ -1,0 +1,109 @@
+$primary-color: #6561e8;
+//we can dark the color using darken
+$primary-color-dark: darken($primary-color,20%);
+//we can lighten the color using lighten
+$primary-color-dark: lighten($primary-color,20%);
+//$primary-color-dark: #3530ee;
+$section-padding:20px;
+
+@mixin clearfloats{
+  content:"";
+  clear:both;
+  display:table;
+}
+
+@mixin section-settings{
+  width:500px;
+  height:100px;
+  padding:$section-padding;
+}
+
+// @mixin btn-setting{
+//   text-decoration: none;
+//   padding: 10px;
+//   border-radius: 50px;
+// }
+
+@function calculate-width($a,$b) {
+  @return($a*$b);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section {
+  @include section-settings;
+  background-color: #ecde55;
+  float: left;
+  display: inline-block;
+}
+
+.btn {
+  // @include btn-setting;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 50px;
+
+  color: #000;
+}
+
+.btn:hover {
+  background-color: $primary-color-dark;
+}
+
+.btn-full {
+  background-color: $primary-color;
+}
+
+.btn-ghost {
+  border: 2px solid $primary-color;
+}
+
+.section2 {
+  
+  @include section-settings;
+  background-color: #ed906d;
+  padding-top:5px;
+  float: left;
+  display: inline-block;
+}
+
+nav {
+  ul {
+    list-style: none;
+    line-height: 2;
+
+    a {
+      display: block;
+      text-decoration: none;
+      text-transform: uppercase;
+    
+    &:link,
+    &:visited{
+      color:$primary-color-dark;
+    }
+    
+    &:hover,
+    &:active{
+      color:#000;
+      background-color:$primary-color;
+    }
+    }
+  }
+}
+
+.section3{
+  @include clearfloats; 
+  @include section-settings;
+  width:calculate-width(500,2)*1px;
+  background-color:#c9f866;
+}
+
+.cta-btn{
+ // @include btn-setting;
+  @extend .btn;
+  background-color:#fff;
+}
